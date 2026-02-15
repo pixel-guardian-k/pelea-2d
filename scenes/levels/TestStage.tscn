@@ -1,3 +1,61 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sprites/suelo_metal.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/characters/Stickman.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 111.75, 15 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 63.75 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3.975, 15.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 3.95, 15.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 5.575, 15.5 )
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 80, 500 )
+scale = Vector2( 20, 1 )
+
+[node name="TileMap" type="TileMap" parent="StaticBody2D"]
+scale = Vector2( 0.05, 1 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -393203, 0, 0, -393202, 0, 0, -393201, 0, 0, -393200, 0, 0, -393199, 0, 0, -196610, 0, 0, -131074, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -65538, 0, 0, -2, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 65555, 0, 0, 65556, 0, 0, 65557, 0, 0, 65558, 0, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 2.3875, 17 )
+scale = Vector2( 0.05, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -2.4, -63.25 )
+scale = Vector2( 0.05, 1 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 13.625, -79.5 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 24.8, -175.5 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 35.975, 47.5 )
+shape = SubResource( 5 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 115, 421 )

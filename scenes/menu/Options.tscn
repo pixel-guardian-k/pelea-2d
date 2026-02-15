@@ -1,86 +1,97 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/menu/options.gd" type="Script" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 800, 600 )
+script = ExtResource( 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Opciones" type="Label" parent="VBoxContainer"]
-margin_top = 5.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Opciones" type="Label" parent="Panel/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 19.0
+margin_bottom = 14.0
 text = "Opciones"
 align = 1
 
-[node name="Pantalla" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Pantalla" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 18.0
 margin_right = 1024.0
 margin_bottom = 42.0
 
-[node name="Pantalla" type="Label" parent="VBoxContainer/Pantalla"]
+[node name="Pantalla" type="Label" parent="Panel/VBoxContainer/Pantalla"]
 margin_top = 5.0
 margin_bottom = 19.0
 
-[node name="Pantalla Completa" type="CheckBox" parent="VBoxContainer/Pantalla"]
+[node name="Fullscreen" type="CheckBox" parent="Panel/VBoxContainer/Pantalla"]
 margin_left = 4.0
 margin_right = 147.0
 margin_bottom = 24.0
 text = "Pantalla Completa"
 
-[node name="Volumen General" type="HBoxContainer" parent="VBoxContainer"]
+[node name="General" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 46.0
 margin_right = 1024.0
 margin_bottom = 62.0
 
-[node name="General" type="Label" parent="VBoxContainer/Volumen General"]
+[node name="General" type="Label" parent="Panel/VBoxContainer/General"]
 margin_top = 1.0
 margin_right = 111.0
 margin_bottom = 15.0
 text = "Volumen General"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/Volumen General"]
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/General"]
 margin_left = 115.0
-margin_right = 315.0
+margin_right = 131.0
 margin_bottom = 16.0
 
-[node name="Volumen SFX" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SFX" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 66.0
 margin_right = 1024.0
 margin_bottom = 82.0
 
-[node name="Volumen SFX" type="Label" parent="VBoxContainer/Volumen SFX"]
+[node name="Volumen SFX" type="Label" parent="Panel/VBoxContainer/SFX"]
 margin_top = 1.0
 margin_right = 83.0
 margin_bottom = 15.0
 text = "Volumen SFX"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/Volumen SFX"]
-margin_left = 115.0
-margin_right = 315.0
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/SFX"]
+margin_left = 87.0
+margin_right = 103.0
 margin_bottom = 16.0
 
-[node name="Escala UI" type="HBoxContainer" parent="VBoxContainer"]
+[node name="UI" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 86.0
 margin_right = 1024.0
 margin_bottom = 102.0
 
-[node name="Escala UI" type="Label" parent="VBoxContainer/Escala UI"]
+[node name="Escala UI" type="Label" parent="Panel/VBoxContainer/UI"]
 margin_top = 1.0
 margin_right = 93.0
 margin_bottom = 15.0
 text = "Escala de la UI"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/Escala UI"]
-margin_left = 115.0
-margin_right = 315.0
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/UI"]
+margin_left = 97.0
+margin_right = 113.0
 margin_bottom = 16.0
 
-[node name="Volver" type="Button" parent="VBoxContainer"]
+[node name="Return" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 106.0
 margin_right = 1024.0
 margin_bottom = 126.0
 text = "Volver"
+
+[connection signal="toggled" from="Panel/VBoxContainer/Pantalla/Fullscreen" to="." method="_on_Fullscreen_toggled"]
+[connection signal="drag_ended" from="Panel/VBoxContainer/General/HSlider" to="." method="_on_HSlider_drag_ended"]
+[connection signal="changed" from="Panel/VBoxContainer/SFX/HSlider" to="." method="_on_HSlider_changed"]
+[connection signal="drag_ended" from="Panel/VBoxContainer/UI/HSlider" to="." method="_on_HSlider_drag_ended"]

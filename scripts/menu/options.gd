@@ -1,9 +1,9 @@
 extends Control
 
-onready var fullscreen_checkbox = $Panel/VBoxContainer/HBoxContainer/CheckBox
-onready var master_slider = $Panel/VBoxContainer/HBoxContainer2/HSlider
-onready var sfx_slider = $Panel/VBoxContainer/HBoxContainer3/HSlider
-onready var ui_slider = $Panel/VBoxContainer/HBoxContainer4/HSlider
+onready var fullscreen_checkbox = $Panel/VBoxContainer/Pantalla/Fullscreen
+onready var master_slider = $Panel/VBoxContainer/General/HSlider
+onready var sfx_slider = $Panel/VBoxContainer/SFX/HSlider
+onready var ui_slider = $Panel/VBoxContainer/UI/HSlider
 
 func _ready():
 	fullscreen_checkbox.pressed = OS.window_fullscreen
@@ -30,3 +30,18 @@ func _ready():
 	ui_slider.max_value = 1.5
 	ui_slider.step = 0.05
 	ui_slider.value = rect_scale.x
+
+func _on_Return_pressed():
+	get_tree().change_scene("res://scenes/menu/MainMenu.tscn")
+
+
+func _on_Fullscreen_toggled(button_pressed):
+	pass # Replace with function body.
+
+
+func _on_HSlider_drag_ended(value_changed):
+	pass # Replace with function body.
+
+
+func _on_HSlider_changed():
+	pass # Replace with function body.
